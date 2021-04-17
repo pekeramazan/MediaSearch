@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MediaSearch</string>
+    <string name="something_went_wrong">Bir hata oluştu</string>
+    <string name="connectivity_error">Lütfen internet bağlantınızı kontrol ediniz</string>
+    <string name="internal_server_not_found">Bir hata oluştu lütfen tekrar deneyiniz.</string>
+
+</resources>
