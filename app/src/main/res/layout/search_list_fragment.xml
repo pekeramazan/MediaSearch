@@ -40,7 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_view">
-
+            <Button
+                android:id="@+id/button_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="0.25"
+                android:textSize="9sp"
+                android:onClick="@{() ->viewModel.filterButtons(Categories.ALL)}"
+                android:text="All" />
             <Button
                 android:id="@+id/button_movie"
                 android:layout_width="wrap_content"
@@ -48,6 +57,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
+                android:textSize="9sp"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.MOVIE)}"
                 android:text="Movie" />
 
@@ -59,6 +69,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
+                android:textSize="9sp"
                 android:text="Music" />
 
             <Button
@@ -69,6 +80,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
+                android:textSize="9sp"
                 android:text="Apps" />
 
             <Button
@@ -79,6 +91,7 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
+                android:textSize="9sp"
                 android:text="Books" />
         </LinearLayout>
 

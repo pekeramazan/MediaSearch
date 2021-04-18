@@ -72,6 +72,7 @@ class SearchListFragment :
                 when(searchListViewEvent.input) {
                     SearchCategoryEnums.Categories.MOVIE -> {
                         viewBinding.buttonMovie.isEnabled=false
+                        viewBinding.buttonAll.isEnabled=true
                         viewBinding.buttonBooks.isEnabled=true
                         viewBinding.buttonMusic.isEnabled=true
                         viewBinding.buttonApps.isEnabled=true
@@ -80,6 +81,7 @@ class SearchListFragment :
 
                     }
                     SearchCategoryEnums.Categories.MUSIC -> {
+                        viewBinding.buttonAll.isEnabled=true
                         viewBinding.buttonMovie.isEnabled=true
                         viewBinding.buttonBooks.isEnabled=true
                         viewBinding.buttonMusic.isEnabled=false
@@ -88,6 +90,7 @@ class SearchListFragment :
 
                     }
                     SearchCategoryEnums.Categories.BOOK -> {
+                        viewBinding.buttonAll.isEnabled=true
                         viewBinding.buttonMovie.isEnabled=true
                         viewBinding.buttonBooks.isEnabled=false
                         viewBinding.buttonMusic.isEnabled=true
@@ -96,11 +99,21 @@ class SearchListFragment :
 
                     }
                     SearchCategoryEnums.Categories.APPS -> {
+                        viewBinding.buttonAll.isEnabled=true
                         viewBinding.buttonMovie.isEnabled=true
                         viewBinding.buttonBooks.isEnabled=true
                         viewBinding.buttonMusic.isEnabled=true
                         viewBinding.buttonApps.isEnabled=false
                         onDataChange( viewModel.searchResponse.value!!.filter { s -> s.kind == SearchCategoryEnums.Categories.APPS.categories })
+
+                    }
+                    SearchCategoryEnums.Categories.ALL -> {
+                        viewBinding.buttonAll.isEnabled=false
+                        viewBinding.buttonMovie.isEnabled=true
+                        viewBinding.buttonBooks.isEnabled=true
+                        viewBinding.buttonMusic.isEnabled=true
+                        viewBinding.buttonApps.isEnabled=true
+                        onDataChange( viewModel.searchResponse.value!!)
 
                     }
                 }
@@ -126,6 +139,7 @@ class SearchListFragment :
                 viewBinding.buttonBooks.isEnabled=true
                 viewBinding.buttonMusic.isEnabled=true
                 viewBinding.buttonApps.isEnabled=true
+                viewBinding.buttonAll.isEnabled=false
                 viewModel.onSearch()
                 return false
             }

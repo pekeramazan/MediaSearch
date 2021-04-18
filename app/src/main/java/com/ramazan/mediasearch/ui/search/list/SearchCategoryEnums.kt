@@ -5,7 +5,9 @@ object SearchCategoryEnums {
         MOVIE("feature-movie"),
         MUSIC("song"),
         APPS("software-package"),
-        BOOK("book");
+        BOOK("book"),
+        ALL("software-package");
+
 
     }
 }

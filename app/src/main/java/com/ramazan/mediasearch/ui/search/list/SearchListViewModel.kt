@@ -111,6 +111,10 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
                   sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.BOOK))
 
               }
+              SearchCategoryEnums.Categories.ALL ->{
+                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.ALL))
+
+              }
           }
       }
 
