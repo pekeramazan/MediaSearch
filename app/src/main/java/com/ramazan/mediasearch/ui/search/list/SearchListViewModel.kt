@@ -18,8 +18,11 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
 
     val searchText = MutableLiveData<String>("")
 
-    private val _searchResponse = MutableLiveData<ArrayList<SearchResponse.SearchResponseDetail>>()
-    val searchResponse: LiveData<ArrayList<SearchResponse.SearchResponseDetail>> = _searchResponse
+    private val _searchResponse = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
+    val searchResponse: LiveData<List<SearchResponse.SearchResponseDetail>> = _searchResponse
+
+    private val _filteredList = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
+    val filteredList: LiveData<List<SearchResponse.SearchResponseDetail>> = _filteredList
 
     private val _searchCount = MutableLiveData<String>()
     val searchCount: LiveData<String> = _searchCount
@@ -86,6 +89,35 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
         text.let {
             searchText.value = it
         }
+
+    }
+
+    fun filterButtons(filter: SearchCategoryEnums.Categories){
+      if(!_searchResponse.value.isNullOrEmpty()) {
+          when(filter){
+              SearchCategoryEnums.Categories.MOVIE ->{
+                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MOVIE))
+
+              }
+              SearchCategoryEnums.Categories.MUSIC ->{
+                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MUSIC))
+
+              }
+              SearchCategoryEnums.Categories.APPS ->{
+                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.APPS))
+
+              }
+              SearchCategoryEnums.Categories.BOOK ->{
+                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.BOOK))
+
+              }
+          }
+      }
+
+
+
+
+
 
     }
 

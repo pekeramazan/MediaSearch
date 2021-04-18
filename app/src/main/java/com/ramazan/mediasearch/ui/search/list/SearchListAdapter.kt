@@ -3,6 +3,8 @@ package com.ramazan.mediasearch.ui.search.list
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,7 +13,7 @@ import com.ramazan.mediasearch.network.responses.SearchResponse
 import com.ramazan.mediasearch.utils.DateHelper
 
 class SearchListAdapter(
-    var list: ArrayList<SearchResponse.SearchResponseDetail>,
+    var list: List<SearchResponse.SearchResponseDetail>,
     val viewModel: SearchListViewModel
 ) : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
 
@@ -23,11 +25,6 @@ class SearchListAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val binding=ViewholderSearchListRowBinding.inflate(inflater,parent,false)
         return ViewHolder(binding,viewModel)
-    }
-    fun updateAdapter(newList: ArrayList<SearchResponse.SearchResponseDetail>) {
-        list.clear()
-        list.addAll(newList)
-        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = list.size
