@@ -2,6 +2,8 @@ package com.ramazan.mediasearch.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import com.ramazan.mediasearch.R
 import com.ramazan.mediasearch.core.BaseActivity
 import com.ramazan.mediasearch.databinding.ActivityMainBinding
@@ -12,7 +14,6 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainActivityViewModel>(R.l
 
 
     override fun onInitDataBinding() {
-        viewBinding.viewModel = viewModel
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,5 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainActivityViewModel>(R.l
 
     }
     override fun viewModelClass() = MainActivityViewModel::class
+
 
 }
