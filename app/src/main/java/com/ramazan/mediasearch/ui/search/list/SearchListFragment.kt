@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ramazan.mediasearch.R
@@ -40,25 +41,16 @@ class SearchListFragment() :
 
     private fun onViewEvent(searchListViewEvent: SearchListViewEvent) {
         when (searchListViewEvent) {
+
+             is SearchListViewEvent.NavigateDetail -> {
+                navigateToDetail(searchListViewEvent.artUrl100,searchListViewEvent.artistName,searchListViewEvent.collectionName,searchListViewEvent.longDescription)
+            }
             SearchListViewEvent.Error -> {
                 Toast.makeText(
                     context,
                     getString(R.string.something_went_wrong),
                     Toast.LENGTH_SHORT
                 ).show()
-
-            }
-            is SearchListViewEvent.ShowInputError -> {
-                when (searchListViewEvent.input) {
-                    SearchListInputEnums.SEARCH_TEXT_EMPTY -> {
-
-
-                    }
-                    SearchListInputEnums.SEARCH_TEXT_CHR -> {
-
-
-                    }
-                }
 
             }
 
@@ -121,7 +113,7 @@ class SearchListFragment() :
         viewBinding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                if (newText.length > 2) {
+                if (newText.length > 3) {
                     viewModel.setSearchText(newText)
                 }
                 return false
@@ -141,5 +133,21 @@ class SearchListFragment() :
         })
     }
 
+    private fun navigateToDetail(
+        artUrl100: String?,
+        artistName: String?,
+        collectionName: String?,
+        longDescription: String?
+    ) {
+        val action = SearchListFragmentDirections.actionSearchListFragmentToSearchDetailFragment()
+        action.artistName = artistName
+        action.collectionName = collectionName
+        action.longDescription = longDescription
+        action.artUrl100 = artUrl100
 
+        this.findNavController().navigate(action)
+
+
+    }
 }
+

@@ -21,9 +21,9 @@
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
             android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +33,9 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,66 +44,66 @@
                 android:id="@+id/button_all"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
+                android:layout_marginStart="@dimen/margin_2dp"
+                android:layout_marginEnd="@dimen/margin_2dp"
                 android:layout_weight="0.25"
-                android:textSize="9sp"
+                android:textSize="@dimen/text_size_9sp"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.ALL)}"
-                android:text="All" />
+                android:text="@string/all" />
             <Button
                 android:id="@+id/button_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="@dimen/margin_2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
-                android:textSize="9sp"
+                android:textSize="@dimen/text_size_9sp"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.MOVIE)}"
-                android:text="Movie" />
+                android:text="@string/movies" />
 
             <Button
                 android:id="@+id/button_music"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.MUSIC)}"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="@dimen/margin_2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_weight="0.25"
-                android:textSize="9sp"
-                android:text="Music" />
+                android:textSize="@dimen/text_size_9sp"
+                android:text="@string/music" />
 
             <Button
                 android:id="@+id/button_apps"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.APPS)}"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
+                android:layout_marginStart="@dimen/margin_2dp"
+                android:layout_marginEnd="@dimen/margin_2dp"
                 android:layout_weight="0.25"
-                android:textSize="9sp"
-                android:text="Apps" />
+                android:textSize="@dimen/text_size_9sp"
+                android:text="@string/apps" />
 
             <Button
                 android:id="@+id/button_books"
                 android:onClick="@{() ->viewModel.filterButtons(Categories.BOOK)}"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
+                android:layout_marginStart="@dimen/margin_2dp"
+                android:layout_marginEnd="@dimen/margin_2dp"
                 android:layout_weight="0.25"
-                android:textSize="9sp"
-                android:text="Books" />
+                android:textSize="@dimen/text_size_9sp"
+                android:text="@string/books" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_list_rcycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:paddingBottom="16dp"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:layout_marginBottom="@dimen/margin_8dp"
+            android:paddingBottom="@dimen/margin_16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,10 +126,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sonuç bulunamadı"
+            android:text="@string/no_result"
             android:textAlignment="center"
             android:visibility="@{ viewModel.empty ? View.VISIBLE : View.GONE}"
-            android:textSize="50sp"
+            android:textSize="@dimen/text_size_50sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

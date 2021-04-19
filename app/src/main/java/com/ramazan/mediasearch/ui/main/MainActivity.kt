@@ -7,6 +7,7 @@ import androidx.navigation.NavDestination
 import com.ramazan.mediasearch.R
 import com.ramazan.mediasearch.core.BaseActivity
 import com.ramazan.mediasearch.databinding.ActivityMainBinding
+import com.ramazan.mediasearch.ui.search.detail.SearchDetailFragment
 import kotlin.reflect.KClass
 
 class MainActivity : BaseActivity<ActivityMainBinding,MainActivityViewModel>(R.layout.activity_main){

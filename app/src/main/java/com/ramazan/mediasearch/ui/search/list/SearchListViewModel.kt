@@ -21,9 +21,8 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
 
     val searchText = MutableLiveData<String>("")
 
-   private val _searchResponse = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
+    private val _searchResponse = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
     val searchResponse: LiveData<List<SearchResponse.SearchResponseDetail>> = _searchResponse
-
 
 
     private val _filteredList = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
@@ -44,11 +43,9 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
         var result: Boolean = true
 
         if (searchText.value.isNullOrEmpty()) {
-            sendEvent(SearchListViewEvent.ShowInputError(SearchListInputEnums.SEARCH_TEXT_EMPTY))
             result = false
 
-        } else if (searchText.value!!.length < 2) {
-            sendEvent(SearchListViewEvent.ShowInputError(SearchListInputEnums.SEARCH_TEXT_CHR))
+        } else if (searchText.value!!.length < 3) {
             result = false
 
         }
@@ -97,37 +94,50 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
 
     }
 
-    fun filterButtons(filter: SearchCategoryEnums.Categories){
-      if(!_searchResponse.value.isNullOrEmpty()) {
-          when(filter){
-              SearchCategoryEnums.Categories.MOVIE ->{
-                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MOVIE))
+    fun filterButtons(filter: SearchCategoryEnums.Categories) {
+        if (!_searchResponse.value.isNullOrEmpty()) {
+            when (filter) {
+                SearchCategoryEnums.Categories.MOVIE -> {
+                    sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MOVIE))
 
-              }
-              SearchCategoryEnums.Categories.MUSIC ->{
-                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MUSIC))
+                }
+                SearchCategoryEnums.Categories.MUSIC -> {
+                    sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.MUSIC))
 
-              }
-              SearchCategoryEnums.Categories.APPS ->{
-                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.APPS))
+                }
+                SearchCategoryEnums.Categories.APPS -> {
+                    sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.APPS))
 
-              }
-              SearchCategoryEnums.Categories.BOOK ->{
-                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.BOOK))
+                }
+                SearchCategoryEnums.Categories.BOOK -> {
+                    sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.BOOK))
 
-              }
-              SearchCategoryEnums.Categories.ALL ->{
-                  sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.ALL))
+                }
+                SearchCategoryEnums.Categories.ALL -> {
+                    sendEvent(SearchListViewEvent.Filter(SearchCategoryEnums.Categories.ALL))
 
-              }
-          }
-      }
-
-
+                }
+            }
+        }
 
 
 
 
+    }
+    fun openListDetailClick(
+        artUrl100: String?,
+        artistName: String?,
+        collectionName: String?,
+        longDescription: String?
+    ) {
+        sendEvent(
+            SearchListViewEvent.NavigateDetail(
+                artUrl100,
+                artistName,
+                collectionName,
+                longDescription
+            )
+        )
     }
 
 }

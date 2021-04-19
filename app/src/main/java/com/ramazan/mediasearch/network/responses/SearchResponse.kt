@@ -72,6 +72,8 @@ data class SearchResponse(
         @SerializedName("trackViewUrl")
         val trackViewUrl: String,
         @SerializedName("wrapperType")
-        val wrapperType: String
+        val wrapperType: String,
+        @SerializedName("longDescription")
+        val longDescription: String
     )
 }

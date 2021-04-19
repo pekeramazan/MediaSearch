@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ramazan.mediasearch.R
-import com.ramazan.mediasearch.databinding.ProgressLoadingBinding
 import com.ramazan.mediasearch.databinding.ViewholderSearchListRowBinding
 import com.ramazan.mediasearch.network.responses.SearchResponse
 import com.ramazan.mediasearch.utils.DateHelper
@@ -20,16 +19,6 @@ class SearchListAdapter(
     var list: List<SearchResponse.SearchResponseDetail>,
     val viewModel: SearchListViewModel
 ) : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
-
-
-
-
-
-
-
-
-
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
