@@ -1,13 +1,17 @@
 package com.ramazan.mediasearch.ui.search.list
 
+import android.content.Context
 import android.os.Handler
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ramazan.mediasearch.R
+import com.ramazan.mediasearch.databinding.ProgressLoadingBinding
 import com.ramazan.mediasearch.databinding.ViewholderSearchListRowBinding
 import com.ramazan.mediasearch.network.responses.SearchResponse
 import com.ramazan.mediasearch.utils.DateHelper
@@ -16,6 +20,15 @@ class SearchListAdapter(
     var list: List<SearchResponse.SearchResponseDetail>,
     val viewModel: SearchListViewModel
 ) : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
+
+
+
+
+
+
+
+
+
 
 
     override fun onCreateViewHolder(
@@ -29,8 +42,7 @@ class SearchListAdapter(
 
     override fun getItemCount(): Int = list.size
 
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =holder.bind(list[position],position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)  =holder.bind(list[position],position)
 
     inner class ViewHolder(
         val binding: ViewholderSearchListRowBinding,

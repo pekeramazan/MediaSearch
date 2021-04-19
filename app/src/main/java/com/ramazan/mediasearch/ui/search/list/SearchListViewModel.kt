@@ -1,14 +1,17 @@
 package com.ramazan.mediasearch.ui.search.list
 
+import android.database.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagedList
 import com.ramazan.mediasearch.core.BaseViewModel
 import com.ramazan.mediasearch.data.Event
 import com.ramazan.mediasearch.network.repositories.SearchRepository
 import com.ramazan.mediasearch.network.responses.SearchResponse
 import com.ramazan.mediasearch.network.utils.Result
+import io.reactivex.internal.operators.single.SingleInternalHelper.toObservable
 import kotlinx.coroutines.launch
 
 class SearchListViewModel(private val searchRepository: SearchRepository) : BaseViewModel() {
@@ -18,8 +21,10 @@ class SearchListViewModel(private val searchRepository: SearchRepository) : Base
 
     val searchText = MutableLiveData<String>("")
 
-    private val _searchResponse = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
+   private val _searchResponse = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
     val searchResponse: LiveData<List<SearchResponse.SearchResponseDetail>> = _searchResponse
+
+
 
     private val _filteredList = MutableLiveData<List<SearchResponse.SearchResponseDetail>>()
     val filteredList: LiveData<List<SearchResponse.SearchResponseDetail>> = _filteredList

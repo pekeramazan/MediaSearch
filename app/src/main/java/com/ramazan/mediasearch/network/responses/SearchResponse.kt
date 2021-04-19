@@ -1,5 +1,6 @@
 package com.ramazan.mediasearch.network.responses
 
+import androidx.paging.PagedList
 import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(
